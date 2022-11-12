@@ -33,7 +33,7 @@
                 <h3>Search for a City</h3>
                 <form id="user-form" class="card-body">
                     <label class="form-label" for="cityname">City Name</label>
-                    <input name="cityname" id="citymame" placeholder="San Diego" type="text" autofocus="true" class="form-input" />
+                    <input name="cityname" id="searchCityName" class="form-input" placeholder="San Diego" type="text" autofocus="true" />
                     <button type="submit" class="btn" id="btn">Get City</button>
                 </form>
             </div>
@@ -56,14 +56,17 @@
         <!-- STATS BOARD -->
         <div class="col-12 col-md-8">
             <h2 class="city-title" id="city-title">City Title Display</h2>
-            <div id="city-stats-list" class="list-group"></div>
+            <div id="city-stats-list" class="list-group">
+                <span id="temperature"></span>
+                <span id="wind"></span>
+                <span id="humidity"></span>
+                <span id="uvindex"></span>
+            </div>
         </div>
 
         <div class="col-12 col-md-8">
             <h3>Five day Forecast</h3>
-            <ul>
-                
-            </ul>
+            <div id="city-result-five-days" class="list-group"></div>
         </div>
 
         
