@@ -6,6 +6,7 @@ var theTemperature = document.getElementById("temperature");
 var theWind = document.getElementById("wind");
 var theHumidity = document.getElementById("humidity");
 var theUvindex = document.getElementById("uvindex");
+var queryCity = document.getElementById("queryCity");
 
 // ============================== HANDLER (INPUT) - function handles submit search for city and city buttons
 function searchHandlingEvent(event) {
@@ -20,6 +21,8 @@ function searchHandlingEvent(event) {
 };
 
 userFormElement.addEventListener('submit', function(event) {
+    var searchCity = document.getElementById('searchCityName').value;
+    localStorage.setItem("searchCity", searchCity);
     event.preventDefault();
     searchHandlingEvent();
 });
@@ -33,7 +36,7 @@ function apiSearchByInput(city) {
     console.log(city);
     console.log(cityTitle);
     const cityLimits = 5;
-    const cityButtonKey = "8d7e2d7b64a9b790b3ae603f52ea3086";
+    const cityButton_ApiKey = "8d7e2d7b64a9b790b3ae603f52ea3086";
 
     var requestOptions;
     var myHeaders = new Headers();
@@ -52,9 +55,11 @@ function apiSearchByInput(city) {
     console.log(citySearchValue);
 
     //example raw call: http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&limit=" + cityLimits + "&appid=" + cityButtonKey, requestOptions)
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&limit=" + cityLimits + "&appid=" + cityButton_ApiKey, requestOptions + "&units=imperial")
         .then(response => response.json())
         .then(result => {
+            queryCity.textContent = result;
+            console.log(queryCity);
             result = cityResultFiveDays.innerHTML;
             cityResultFiveDays.textContent;
             console.log(cityResultFiveDays);
@@ -100,7 +105,7 @@ buttonCitySelectionElement.addEventListener('click', function(event){
 function apiSearchByBtn(citySearchButton) {
     console.log("hi, I am searching by button");
 
-    const buttonSearchApiKey = "c542be447bb6ea8c00c93c8f4bd63050";
+    const buttonSearch_ApiKey = "c542be447bb6ea8c00c93c8f4bd63050";
 
     var requestOptions;
     var myHeaders = new Headers();
@@ -118,7 +123,7 @@ function apiSearchByBtn(citySearchButton) {
     console.log(citySearchButton);
 
     //example raw call: http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + citySearchButton + "&appid=" + buttonSearchApiKey, requestOptions)
+    fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + citySearchButton + "&appid=" + buttonSearch_ApiKey, requestOptions)
         .then(response => response.json())
         .then(result => {
             result = cityResultFiveDays.innerHTML;
