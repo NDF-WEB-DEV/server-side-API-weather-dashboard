@@ -12,6 +12,55 @@ h1 {
 }
 .jumbotron {
     background-color: #1569AE;
+    color: white;    
+    text-align: center;
+}
+
+.card {
+    margin: 20px;
+    width: 100%;
+
+}
+.card h3 {
+    margin: 10px;
+    text-align: center;
+    color: #1569AE;
+}
+.card .btn {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    background-color: #EC008C;
     color: white;
+    font-weight: 400;
+    font-size: 20px;
+}
+.card-body {
+    text-align: center;
+    align-items: center;
+    display: block;
+}
+.card .list-group {
+    text-align: center;
+    font-size: 30px;
+    /* line-height: 50px; */
+    color: gray;
+}
+footer {
+    background-color: #1569AE;
+    color: white;   
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    display:block;
+    justify-content: center;
+}
+footer a {
+    color: white; 
+    font-weight: 300;  
+}
+footer a:hover {
+    color: yellow; 
+    font-weight: 300;  
 }
 
