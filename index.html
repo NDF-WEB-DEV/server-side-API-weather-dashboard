@@ -34,26 +34,29 @@
                         <button type="submit" class="btn button" id="btn button">Get City</button>
                     </form>
                     <h3>Press Button to Search by City</h3>
-                    <div class="city-buttons" id="city-buttons">
-                        <button city-info="austin" class="btn">Austin, TX</button>
-                        <button city-info="chicago" class="btn">Chicago, IL</button>
-                        <button city-info="new york" class="btn">New York, NY</button>
-                        <button city-info="orlando" class="btn">Orlando, FL</button>
-                        <button city-info="san francisco" class="btn">San Francisco, CA</button>
-                        <button city-info="santa fe" class="btn">Santa Fe, NM</button>
-                        <button city-info="denver" class="btn">Denver, CO</button>
-                        <button city-info="atlanta" class="btn">Atlanta, GA</button>
+                    <div id="city-buttons">
+                        <button class="city-buttons btn" data-city-info="austin">Austin, TX</button>
+                        <button class="city-buttons btn" data-city-info="chicago">Chicago, IL</button>
+                        <button class="city-buttons btn" data-city-info="new york">New York, NY</button>
+                        <button class="city-buttons btn" data-city-info="orlando">Orlando, FL</button>
+                        <button class="city-buttons btn" data-city-info="san francisco">San Francisco, CA</button>
+                        <button class="city-buttons btn" data-city-info="santa fe">Santa Fe, NM</button>
+                        <button class="city-buttons btn" data-city-info="denver">Denver, CO</button>
+                        <button class="city-buttons btn" data-city-info="atlanta">Atlanta, GA</button>
                     </div>
                 </div>
                 <div id="card2" class="col card">
                     <h3 class="city-title" id="city-title">City Title Display</h3>
-                    <p><span id="queryCity"></span></p>
+                    <!-- <p><span id="queryCity"></span></p> -->
                     <hr>
                     <div id="city-stats-list" class="list-group">
-                        <span id="temperature">Temperature </span><hr>
-                        <span id="wind">Wind</span><hr>
-                        <span id="humidity">Humidity</span><hr>
-                        <span id="uvindex">UV Index</span><hr>
+                        <span id="temperature">Temperature </span><br>
+                        <span id="minTemp">Min. Temp.</span><br>
+                        <span id="maxTemp">Max. Temp.</span><br>
+                        <span id="wind">Wind</span><br>
+                        <span id="humidity">Humidity</span><br>
+                        <span id="description">Weather Statement</span>
+                        <p><span class="icon"></span></p>
                     </div>
                 </div>
 
@@ -77,6 +80,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
 
 </body>
 
