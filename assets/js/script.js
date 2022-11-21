@@ -80,32 +80,45 @@ function apiSearchByInput(city) {
             var latitude = result.coord.lat;
             console.log(latitude);  //checking value is working as expected
             var apiKey = "8d7e2d7b64a9b790b3ae603f52ea3086";
-            var fiveDayForecast = document.getElementsByClassName("list-group");
+            var fiveDayForecast = document.getElementById("city-result-five-days");
+            console.log(fiveDayForecast);
+            var fivedayurl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=imperial";
+            console.log(fivedayurl);
 
-                fetch("api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey)
+                fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=imperial")
                 .then(response => {
                     console.log(response);
-                    fiveDayForecast[0].classList.add('display'); //Manipulate the 5 day forecast by addding the class
                     return response.json();
                 })
                 .then(result => {
                     console.log(result); //checking value is working as expected
                     var eachDay = ""; // stores each day
-                    result.forecastDays.forEach((value, index) => { //for each loop
-                        if(index > 0){
-                            var day = new Date(value.dt*1000).toLocaleDateString("en", {weekday: "long",}); //printing date to local time zone
-                            var icon = value.weather[0].icon; //Getting Icon
-                            var temp = value.temp.day.toFixed(0); //Getting temperature
-                            //Injecting HTML elements
-                            eachDay = `
-                            <div class="forecastDays">
-                                <p>${day}</p>
-                                <p><span class="icons-${icon}"> title="${icon}"</span></p>
-                                <div class="city-result-five-days-temp">${temp}&deg</div>
-                            </div>`
-                            fiveDayForecast[0].insertAdjacentElement('beforeend', eachDay);  //The insertAdjacentElement() method of the Element interface inserts a given element node at a given position relative to the element it is invoked upon.
-                        }
-                    });
+
+                    for(var i = 0; i < result.list.length; i+=9 ) {
+                            var day = new Date(result.list[i].dt).toLocaleDateString("en", {weekday: "long",}); //printing date to local time zone
+                            var icon = result.list[i].weather[0].icon; //Getting Icon
+                            var iconUrl = `https://openweathermap.org/img/w/${icon}.png`; 
+                            var temp = result.list[i].main.temp.toFixed(0); //Getting temperature
+                            var wind = result.list[i].wind.speed;
+                            
+                            var eachDay = document.createElement("div");
+                            var eachDayBody = document.createElement("div");
+                            var heading = document.createElement("h3");
+                            var weatherIcon = document.createElement("img");
+                            var tempEl = document.createElement("p");
+                            var windEl = document.createElement("p");
+                            
+                            eachDay.setAttribute("class", "forecastDays");
+                            eachDay.append(eachDayBody);
+                            heading.textContent = day;
+                            weatherIcon.setAttribute("src", iconUrl);
+                            heading.append(weatherIcon);
+                            tempEl.textContent = `temp: ${temp} deg F`;
+                            windEl.textContent = `wind: ${wind} mph`;
+                            eachDayBody.append(heading, tempEl);
+
+                            fiveDayForecast.append(eachDay);
+                    }
                 });
         })
         .catch(error => console.log('error', error));
